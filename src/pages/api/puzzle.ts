@@ -16,7 +16,6 @@ export default async function handler(
   );
 
   const recastCount = cast.cast.reactions.recasts.length;
-  console.log(recastCount);
 
   // Puzzle generation
   const puzzleSize = 100;

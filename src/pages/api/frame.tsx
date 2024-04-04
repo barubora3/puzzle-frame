@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const randomParam = Math.random().toString(36).substring(7);
   const html = `
       <!DOCTYPE html>
       <html lang="ja">
@@ -17,7 +18,7 @@ export default async function handler(
       <meta property="fc:frame" content="vNext" />
       <meta
         property="fc:frame:image"
-        content="https://puzzle-frame.vercel.app/api/puzzle" />
+        content="https://puzzle-frame.vercel.app/api/puzzle?random="${randomParam} />
 
       <meta name="fc:frame:post_url" content="https://puzzle-frame.vercel.app" />
       <meta name="fc:frame:button:1" content="Refresh" />
