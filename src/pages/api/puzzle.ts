@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // キャストのURLを指定する
-  const url = "https://warpcast.com/miin.eth/0x99f82efe";
+  const url = "https://warpcast.com/tenden/0x316f2ca1";
   const seed = 547441369741335741;
   const cast = await client.lookUpCastByHashOrWarpcastUrl(
     url,
@@ -20,7 +20,7 @@ export default async function handler(
 
   // Puzzle generation
   const puzzleSize = 100;
-  const originalImage = "https://warpcast.com/tenden/0x316f2ca1";
+  const originalImage = "https://puzzle-frame.vercel.app/puzzle.jpg";
   const revealedPieces = recastCount;
 
   const canvas = createCanvas(1200, 630);
