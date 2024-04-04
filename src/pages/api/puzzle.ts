@@ -16,10 +16,11 @@ export default async function handler(
   );
 
   const recastCount = cast.cast.reactions.recasts.length;
+  console.log(recastCount);
 
   // Puzzle generation
   const puzzleSize = 100;
-  const originalImage = "https://puzzle-frame.vercel.app/puzzle.jpg";
+  const originalImage = "https://warpcast.com/tenden/0x316f2ca1";
   const revealedPieces = recastCount;
 
   const canvas = createCanvas(1200, 630);
