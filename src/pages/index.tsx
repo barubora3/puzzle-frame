@@ -20,11 +20,9 @@ export default function Home() {
           property="fc:frame:image"
           content="https://puzzle-frame.vercel.app/api/puzzle"
         />
-        <meta property="fc:frame:button:1" content="Refresh" />
-        <meta
-          property="fc:frame:post_url"
-          content="https://puzzle-frame.vercel.app"
-        />
+
+        <meta name="fc:frame:post_url" content="https://tenden.ngrok.app" />
+        <meta name="fc:frame:button:1" content="Refresh" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <h1>Puzzle</h1>
