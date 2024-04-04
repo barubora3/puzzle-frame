@@ -6,8 +6,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const puzzleSize = 100;
-  const originalImage = "https://tenden.ngrok.app/puzzle.jpg";
-  const revealedPieces = 80;
+  const originalImage = "https://frames-gilt.vercel.app/site-preview.jpg";
+  const revealedPieces = 16;
+  const seed = 123;
 
   const canvas = createCanvas(1200, 630);
   const ctx = canvas.getContext("2d");
@@ -19,11 +20,13 @@ export default async function handler(
   const data = imgData.data;
 
   const pieces = Array.from({ length: puzzleSize }, (_, i) => i);
+  const shuffledPieces = createSeededShuffle(pieces, seed);
 
   for (let i = 0; i < puzzleSize; i++) {
     if (i >= revealedPieces) {
-      const row = Math.floor(i / 10);
-      const col = i % 10;
+      const pieceIndex = shuffledPieces[i];
+      const row = Math.floor(pieceIndex / 10);
+      const col = pieceIndex % 10;
       const pieceWidth = 1200 / 10;
       const pieceHeight = 630 / 10;
 
@@ -41,4 +44,22 @@ export default async function handler(
   const buffer = canvas.toBuffer("image/png");
   res.setHeader("Content-Type", "image/png");
   res.send(buffer);
+}
+
+function createSeededShuffle<T>(array: T[], seed: number): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(mulberry32(seed + i)() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+function mulberry32(a: number) {
+  return function () {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
