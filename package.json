@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.51",
+    "@neynar/nodejs-sdk": "^1.14.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"

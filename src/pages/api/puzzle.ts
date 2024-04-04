@@ -1,14 +1,29 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { NeynarAPIClient, CastParamType } from "@neynar/nodejs-sdk";
+const client = new NeynarAPIClient(process.env.NEYNAR_API_KEY!);
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // キャストのURLを指定する
+  const url = "https://warpcast.com/miin.eth/0x99f82efe";
+  const seed = 547441369741335741;
+  const cast = await client.lookUpCastByHashOrWarpcastUrl(
+    url,
+    CastParamType.Url
+  );
+
+  console.log(cast.cast.reactions.recasts);
+
+  const recastCount = cast.cast.reactions.recasts.length;
+  console.log(recastCount);
+
+  // Puzzle generation
   const puzzleSize = 100;
-  const originalImage = "https://frames-gilt.vercel.app/site-preview.jpg";
-  const revealedPieces = 16;
-  const seed = 123;
+  const originalImage = "https://puzzle-frame.vercel.app/puzzle.jpg";
+  const revealedPieces = recastCount;
 
   const canvas = createCanvas(1200, 630);
   const ctx = canvas.getContext("2d");

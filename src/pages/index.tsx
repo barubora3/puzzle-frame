@@ -13,18 +13,21 @@ export default function Home() {
         <title>Recast Puzzle</title>
         <meta
           property="og:image"
-          content="https://frames-gilt.vercel.app/site-preview.jpg"
+          content="https://puzzle-frame.vercel.app/api/puzzle"
         />
         <meta property="fc:frame" content="vNext" />
         <meta
           property="fc:frame:image"
-          content="https://tenden.ngrok.app/api/puzzle"
+          content="https://puzzle-frame.vercel.app/api/puzzle"
         />
-        {/* <meta property="fc:frame:button:1" content="Start" />
-        <meta property="fc:frame:post_url" content="https://frames-gilt.vercel.app/api/basic?id=1" /> */}
+        <meta property="fc:frame:button:1" content="Refresh" />
+        <meta
+          property="fc:frame:post_url"
+          content="https://puzzle-frame.vercel.app"
+        />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <h1>Puzzle dayo</h1>
+        <h1>Puzzle</h1>
         <div>
           <img src="/api/puzzle" alt="Jigsaw Puzzle" />
         </div>
