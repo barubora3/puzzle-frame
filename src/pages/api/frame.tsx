@@ -20,7 +20,7 @@ export default async function handler(
         property="fc:frame:image"
         content="https://puzzle-frame.vercel.app/api/puzzle?random="${randomParam} />
 
-      <meta name="fc:frame:post_url" content=""https://puzzle-frame.vercel.app/api/frame" />
+      <meta name="fc:frame:post_url" content="https://puzzle-frame.vercel.app/api/frame" />
       <meta name="fc:frame:button:1" content="Refresh" />
       </head>
       <body>
