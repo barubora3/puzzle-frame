@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // キャストのURLを指定する
-  const url = "https://warpcast.com/tenden/0x316f2ca1";
+  const url = "https://warpcast.com/tenden/0xd49ecda9";
   const seed = 547441369741335741;
   const cast = await client.lookUpCastByHashOrWarpcastUrl(
     url,
